@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:06 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/01 21:23:02 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/02 14:13:33 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,4 @@ void rra(t_list *stack_a)
             stack_a = reverse;
             tmp2->next = NULL;
         }
-}
-
-
-    
 }

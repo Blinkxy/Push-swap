@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:43:09 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:07 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/05 13:52:58 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/02 20:23:04 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+int	ft_atoi(char *str)
 {
-	t_list	*prev;
-	t_list	*tmp;
+	unsigned char	*s;
+	int				i;
+	int				res;
+	int				sign;
 
-	prev = begin_list;
-	while (prev != NULL)
+	s = (unsigned char *)str;
+	res = 0;
+	i = 0;
+	sign = 1;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
+	if (s[i] == '-')
 	{
-		tmp = prev->next;
-		free_fct(prev->data);
-		free(prev);
-		prev = tmp;
+		sign *= -1;
+		i++;
 	}
-	begin_list = NULL;
+	else if (s[i] == '+')
+		i++;
+	while (s[i] >= 48 && s[i] <= 57)
+	{
+		res = res * 10 + (s[i] - 48);
+		i++;
+	}
+	return (res * sign);
 }

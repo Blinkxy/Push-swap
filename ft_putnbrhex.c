@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_putnbrhex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:43:09 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:07 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/24 22:25:18 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/25 13:38:41 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+int	ft_putnbrhex(unsigned long b, char *base)
 {
-	t_list	*prev;
-	t_list	*tmp;
+	int	i;
 
-	prev = begin_list;
-	while (prev != NULL)
+	i = 0;
+	if (b < 16)
+		i += ft_putchar(base[b]);
+	if (b >= 16)
 	{
-		tmp = prev->next;
-		free_fct(prev->data);
-		free(prev);
-		prev = tmp;
+		i += ft_putnbrhex(b / 16, base);
+		i += ft_putnbrhex(b % 16, base);
 	}
-	begin_list = NULL;
+	return (i);
 }

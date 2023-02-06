@@ -1,29 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 15:55:12 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:36 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/22 15:56:45 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/25 15:00:41 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	ft_list_size(t_list *begin_list)
+int	ft_putnbr(long n)
 {
 	int	i;
 
 	i = 0;
-	if (begin_list)
+	if (n < 0)
 	{
-		while (begin_list)
-		{
-			begin_list = begin_list->next;
-			i++;
-		}
+		i += ft_putchar('-');
+		n *= -1;
+	}
+	if (n <= 9 && n >= 0)
+		i += ft_putchar(n + 48);
+	if (n > 9)
+	{
+		i += ft_putnbr(n / 10);
+		i += ft_putnbr(n % 10);
 	}
 	return (i);
 }
+
+int	ft_unsigned(unsigned int k)
+{
+	int	c;
+
+	c = ft_putnbr(k);
+	return (c);
+}
+
+// int main()
+// {
+// 	ft_putnbr(123);
+// }
+
+// if (b > 9)
+// 	i += ft_putnbr(b/10);
+// i += ft_putchar(b%10+'0');

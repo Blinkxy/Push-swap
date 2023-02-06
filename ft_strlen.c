@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:43:09 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:07 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/09/29 14:46:25 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/05 18:52:15 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+size_t	ft_strlen(const char *s)
 {
-	t_list	*prev;
-	t_list	*tmp;
+	size_t	i;
 
-	prev = begin_list;
-	while (prev != NULL)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		tmp = prev->next;
-		free_fct(prev->data);
-		free(prev);
-		prev = tmp;
+		i++;
 	}
-	begin_list = NULL;
+	return (i);
 }

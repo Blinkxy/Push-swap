@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:43:09 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:07 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/10 15:01:48 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/06 15:10:36 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+char	*ft_substr(char *s, unsigned int start, int len)
 {
-	t_list	*prev;
-	t_list	*tmp;
+	int	i;
+	char	*str;
+	int	j;
 
-	prev = begin_list;
-	while (prev != NULL)
-	{
-		tmp = prev->next;
-		free_fct(prev->data);
-		free(prev);
-		prev = tmp;
-	}
-	begin_list = NULL;
+	j = 0;
+	if (start >= ft_strlen(s) || !s)
+		return (0);
+	if (start + len <= ft_strlen(s))
+		str = malloc(len + 1);
+	else
+		str = malloc(ft_strlen(s) - start + 1);
+	if (!str)
+		return (NULL);
+	i = start;
+	while (i < (start + len) && s[i])
+		str[j++] = s[i++];
+	str[j] = '\0';
+	return (str);
 }

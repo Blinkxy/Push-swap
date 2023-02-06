@@ -1,22 +1,17 @@
 
 NAME = push_swap
-LIB = lib.a
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 CC = cc
-AR = ar rcs
-SRC = 
+SRC = push_rules.c push_rules_bis.c ft_create_elem.c ft_list_at.c ft_list_clear.c ft_list_foreach.c \
+ft_list_last.c ft_list_push_back.c ft_list_push_front.c ft_list_size.c
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) $(LIB)	
+all: $(NAME) 	
 
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ)  -o $(NAME)
 	@echo ---program linked---
-
-$(LIB): $(OBJ)
-	@$(AR) $(LIB) $(OBJ)
-	@echo ---library generated---
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -26,9 +21,9 @@ clean:
 	@echo ---objects cleaned---
 
 fclean: clean
-	@$(RM) $(NAME) $(LIB)
+	@$(RM) $(NAME)
 	@echo ---program cleaned---
-	@echo ---library cleaned---
+	@echo ---objects cleaned---
 
 re: fclean all
 

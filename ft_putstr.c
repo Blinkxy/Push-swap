@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:43:09 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:07 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/22 15:33:54 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/25 13:10:45 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+int	ft_putstr(char *s)
 {
-	t_list	*prev;
-	t_list	*tmp;
+	int	i;
 
-	prev = begin_list;
-	while (prev != NULL)
+	i = 0;
+	if (!s)
 	{
-		tmp = prev->next;
-		free_fct(prev->data);
-		free(prev);
-		prev = tmp;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	begin_list = NULL;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }

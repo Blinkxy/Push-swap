@@ -6,11 +6,13 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 19:18:38 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/07 21:58:32 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
 
 int count_space(char *str)
 {
@@ -33,8 +35,11 @@ int count_space(char *str)
 
 int    concatinate(char *str1, char *str2)
 {
-    int i = -1;
-    int dlen = ft_strlen(str1);
+    int i;
+    int dlen;
+    
+    dlen = ft_strlen(str1);
+    i = -1;
     if (!str1 || !str2)
         return (0);
     while (++i < ft_strlen(str2))
@@ -44,10 +49,9 @@ int    concatinate(char *str1, char *str2)
     return (0);
 }
 
-char **return_arg(char **argv, int argc)
+char **return_arg(char **argv, int argc, t_data *utils)
 {
     char *arg;
-   char **matrix;
     int  max_len;
     int i = 1;
 
@@ -58,44 +62,29 @@ char **return_arg(char **argv, int argc)
     i = 1;
     while (i < argc)
         concatinate(arg, argv[i++]);
-    matrix = ft_split(arg, ' ');
-    return (matrix);
+    utils->matrix = ft_split(arg, ' ');
+    utils->matrix_size = count_space(arg);
+    return (utils->matrix);
 }
 
 int main(int ac, char **av)
 {
     int i;
-    // t_list *list;
+    t_data *utils;
     char **str;
-
-
+    // t_list *list;
    if (ac >= 2)
    {
-   
-i = 1;
-//str = each_arg(av,ac);
-str = return_arg(av, ac);
-// while(++i)
-// ft_printf("arguments:%s\n",str[i]);
-}
+i = -1;
+utils = (t_data *)malloc(sizeof(t_data));    
+str = return_arg(av, ac, utils);
+while(++i < utils->matrix_size)
+ft_printf("arguments:%s\n",str[i]);
+    }
+    // free(utils);
 }
 
-char **each_arg(char **arg_array, int ac)
-{
-    int i;
-    // int j;
-    // int k;
-    char *join;
-    // long int *int_arr;
-    
-    i = 1;
-    join = malloc(1);
-    while(i < ac)
-    {
-        join = ft_strjoin(join, arg_array[i]);
-        i++;
-    }
-//     j = 0;
+// void  valid_args()
 //     while(str[j])
 //     {
 //     k = 0;
@@ -108,16 +97,4 @@ char **each_arg(char **arg_array, int ac)
 //         k++;
 //     }
 //     j++;
-// }
-return(ft_split(join,' '));
-}
-
-// int_arr [j] = ft_atoi(str[j][k]);
-
-//     i = -1;
-//     while(int_arr[++i])
-//         {
-//             while(int_arr[j] && j < ft_strlen(int_arr))
-//             if ()
-//         }
 // }

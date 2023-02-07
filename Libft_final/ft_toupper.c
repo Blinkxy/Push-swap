@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/09/30 17:00:41 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/09 22:02:36 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+int	ft_toupper(int c)
 {
-	t_list	*new;
+	unsigned char	a;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	a = (unsigned char)c;
+	if (a >= 97 && a <= 122)
 	{
-		new->data = data;
-		new->next = NULL;
+		a -= 32;
+		return (a);
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	return (c);
 }

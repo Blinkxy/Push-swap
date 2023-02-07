@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/07 19:55:18 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/19 20:26:54 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_list	*new;
+	unsigned char	*a;
+	unsigned char	*b;
+	size_t			i;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	a = (unsigned char *)s1;
+	b = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
 	{
-		new->data = data;
-		new->next = NULL;
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
+		i++;
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	return (0);
 }

@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/05 13:53:13 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/19 20:14:41 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_list	*new;
+	unsigned char	*t;
+	unsigned char	k;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
+	t = (unsigned char *)s;
+	k = (unsigned char)c;
+	if (!n)
 		return (0);
-	else if (new)
-	{
-		new->data = data;
-		new->next = NULL;
-	}
-	return (new);
+	while (*t != k && --n)
+		t++;
+	if (*t == k)
+		return (t);
+	return (NULL);
 }
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
-}
+// int main()
+// {
+//     char s[] = "hi how are you ";
+//     char k = 'a';
+//     printf("%s",ft_memchr(s, k, 7));
+// }

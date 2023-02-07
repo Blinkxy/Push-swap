@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/03 15:15:06 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/05 20:05:48 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+char	*ft_strchr(const char *s, int c)
 {
-	t_list	*new;
+	char	*q;
+	char	b;
+	int		i;
+	int		len;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	q = (char *)s;
+	b = (char)c;
+	i = 0;
+	len = ft_strlen(s);
+	while (i <= len)
 	{
-		new->data = data;
-		new->next = NULL;
+		if (q[i] == b)
+			return (&q[i]);
+		i++;
 	}
-	return (new);
+	return (0);
 }
 
-void	rrr(t_list *stack_a, t_list *stack_b)
+/*int main()
 {
-	rra(stack_a);
-	rrb(stack_b);
+	char	*str;
+
+    str = "bo\0njour 1337";
+    printf("%s", strchr(str,'n'));
+    return(0);
 }
+*/

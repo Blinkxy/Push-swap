@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/22 15:33:54 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/07 17:29:33 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+int	ft_putstr(char *s)
 {
-	t_list	*new;
+	int	i;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	i = 0;
+	if (!s)
 	{
-		new->data = data;
-		new->next = NULL;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }

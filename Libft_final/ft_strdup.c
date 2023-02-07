@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/05 13:53:21 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/20 13:33:28 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+char	*ft_strdup(const char *s1)
 {
-	t_list	*new;
+	char	*str;
+	size_t	i;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	i = 0;
+	str = malloc(ft_strlen(s1) + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i] && i < ft_strlen(s1))
 	{
-		new->data = data;
-		new->next = NULL;
+		str[i] = s1[i];
+		i++;
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	str[i] = '\0';
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:16:21 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:16 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/07 17:24:55 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_list_push_front(t_list *begin_list, void *data)
 	if (begin_list)
 	{
 		new = ft_create_elem(data);
-		new->next = being_list;
-		*begin_list = new;
+		new->next = begin_list;
+		begin_list = new;
 	}
 	else
 		begin_list = ft_create_elem(data);

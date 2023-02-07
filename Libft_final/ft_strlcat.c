@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/05 13:53:25 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/07 18:59:34 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_list	*new;
+	size_t	i;
+	size_t	ldst;
+	size_t	lsrc;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
+	if (dstsize == 0 && dst == 0)
 		return (0);
-	else if (new)
+	ldst = ft_strlen(dst);
+	lsrc = ft_strlen(src);
+	if (ldst >= dstsize)
+		return (lsrc + dstsize);
+	i = 0;
+	while (src[i] && (ldst + i) < dstsize - 1)
 	{
-		new->data = data;
-		new->next = NULL;
+		dst[ldst + i] = src[i];
+		i++;
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	dst[ldst + i] = '\0';
+	return (lsrc + ldst);
 }

@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/05 13:52:58 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/07 17:25:28 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+int	ft_atoi(char *str)
 {
-	t_list	*new;
+	unsigned char	*s;
+	int				i;
+	int				res;
+	int				sign;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	s = (unsigned char *)str;
+	res = 0;
+	i = 0;
+	sign = 1;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
+	if (s[i] == '-')
 	{
-		new->data = data;
-		new->next = NULL;
+		sign *= -1;
+		i++;
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	else if (s[i] == '+')
+		i++;
+	while (s[i] >= 48 && s[i] <= 57)
+	{
+		res = res * 10 + (s[i] - 48);
+		i++;
+	}
+	return (res * sign);
 }

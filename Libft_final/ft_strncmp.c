@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/03 19:22:17 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/09 21:52:18 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	*new;
+	size_t	i;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		new->data = data;
-		new->next = NULL;
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	return (new);
+	return (0);
 }
 
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
-}
+// #include<stdio.h>
+// #include<string.h>
+
+// int main()
+// {
+//     char *s1 = "yolq";
+//     char *s2 = "yolq";
+//     printf("%d",ft_strncmp(s1,s2,4));
+//     return(0);
+// }

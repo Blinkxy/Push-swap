@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:06 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:34:30 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/07 17:14:00 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	swap_a(t_list *stack_a)
 
 	if (ft_list_size(stack_a) > 1)
 	{
-		swap = *stack_a->next;
-		tmp = *stack_a;
+		swap = stack_a->next;
+		tmp = stack_a;
 		swap->next = tmp;
-		*stack_a = swap;
+		stack_a = swap;
 		ft_printf("sa\n");
 	}
 }
@@ -34,10 +34,10 @@ void	swap_b(t_list *stack_b)
 
 	if (ft_list_size(stack_b) > 1)
 	{
-		swap = *stack_b->next;
-		tmp = *stack_b;
+		swap = stack_b->next;
+		tmp = stack_b;
 		swap->next = tmp;
-		*stack_b = swap;
+		stack_b = swap;
 		ft_printf("sb\n");
 	}
 }

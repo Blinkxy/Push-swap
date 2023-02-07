@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/03 14:53:05 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/19 19:45:35 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_list	*new;
+	size_t	i;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	i = 0;
+	while (i < len)
 	{
-		new->data = data;
-		new->next = NULL;
+		((unsigned char *)b)[i] = (unsigned char)c;
+		i++;
 	}
-	return (new);
+	return (b);
 }
 
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
-}
+// int main()
+// {
+// 	char str[50] = "yolo my dude";
+// 	printf("%s", ft_memset(str, 'Q', 5));
+// 	return(0);
+// }

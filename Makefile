@@ -2,28 +2,30 @@
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
+LIBFT_A = libft/libft.a
 CC = cc
-SRC = push_rules.c push_rules_bis.c ft_create_elem.c ft_list_at.c ft_list_clear.c ft_list_foreach.c \
-ft_list_last.c ft_list_push_back.c ft_list_push_front.c ft_list_size.c
+SRC = push_rules.c push_rules_bis.c ft_create_elem.c ft_list_at.c ft_list_clear.c \
+ft_list_last.c ft_list_push_back.c ft_list_push_front.c ft_list_size.c push_swap.c push_swap_utils.c \
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME) 	
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ)  -o $(NAME)
+	@make -C Libft
+	@$(CC) $(OBJ) $(LIBFT_A) -o $(NAME)
 	@echo ---program linked---
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:	
-	@$(RM) $(OBJ)
-	@echo ---objects cleaned---
+	@$(RM) $(OBJ) 
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo ---program cleaned---
-	@echo ---objects cleaned---
+	@$(RM) $(NAME) libft/*.o
+	@echo ---program cleared---
+	@echo ---objects cleared---
 
 re: fclean all
 

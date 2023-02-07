@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/11 20:11:50 by mzoheir           #+#    #+#             */
+/*   Updated: 2022/10/18 15:15:44 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	*new;
+	long	b;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	else if (new)
+	b = (long)n;
+	if (b < 0)
 	{
-		new->data = data;
-		new->next = NULL;
+		ft_putchar_fd('-', fd);
+		b *= -1;
 	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	if (b <= 9 && b >= 0)
+	{
+		ft_putchar_fd(b + 48, fd);
+	}
+	if (b > 9)
+	{
+		ft_putnbr_fd(b / 10, fd);
+		ft_putnbr_fd(b % 10, fd);
+	}
 }

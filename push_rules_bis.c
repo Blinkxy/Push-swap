@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:38:14 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 14:39:01 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/07 17:20:39 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	rotate_b(t_list *stack_b)
 
 void	rr(t_list *stack_a, t_list *stack_b)
 {
-	ra(stack_a);
-	rb(stack_b);
+	rotate_a(stack_a);
+	rotate_b(stack_b);
 }
 
 void	rra(t_list *stack_a)
@@ -60,7 +60,7 @@ void	rra(t_list *stack_a)
 	if (ft_list_size(stack_a) > 1)
 	{
 		head = stack_a;
-		while (stack - a->next != NULL)
+		while (stack_a->next != NULL)
 		{
 			tail = stack_a;
 			stack_a = stack_a->next;
@@ -78,7 +78,7 @@ void	rrb(t_list *stack_b)
 	if (ft_list_size(stack_b) > 1)
 	{
 		head = stack_b;
-		while (stack - a->next != NULL)
+		while (stack_b->next != NULL)
 		{
 			tail = stack_b;
 			stack_b = stack_b->next;

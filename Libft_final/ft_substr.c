@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:10 by mzoheir          ###   ########.fr       */
+/*   Created: 2022/10/10 15:01:48 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/07 17:33:14 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_list	*ft_create_elem(void *data)
+char	*ft_substr(const char *s, int start, int len)
 {
-	t_list	*new;
+	int	i;
+	char	*str;
+	int	j;
 
-	new = NULL;
-	new = malloc(sizeof(t_list));
-	if (!new)
+	j = 0;
+	if (start >= ft_strlen(s) || !s)
 		return (0);
-	else if (new)
-	{
-		new->data = data;
-		new->next = NULL;
-	}
-	return (new);
-}
-
-void	rrr(t_list *stack_a, t_list *stack_b)
-{
-	rra(stack_a);
-	rrb(stack_b);
+	if (start + len <= ft_strlen(s))
+		str = malloc(len + 1);
+	else
+		str = malloc(ft_strlen(s) - start + 1);
+	if (!str)
+		return (NULL);
+	i = start;
+	while (i < (start + len) && s[i])
+		str[j++] = s[i++];
+	str[j] = '\0';
+	return (str);
 }

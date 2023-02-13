@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 21:58:32 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/13 20:03:18 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,52 +49,110 @@ int    concatinate(char *str1, char *str2)
     return (0);
 }
 
-char **return_arg(char **argv, int argc, t_data *utils)
+int  valid_args(t_data *utils)
+{       
+   int i;
+   int k;
+   
+    i = -1; 
+    while(utils->matrix[++i])
+    {
+    k = -1;
+        while(utils->matrix[i][++k])
+        {
+            if ((utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-') && (utils->matrix[i][k + 1] < '0' || utils->matrix[i][k + 1] > '9'))
+                return(0);
+            if (!(utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-' || (utils->matrix[i][k] >= '0' && utils->matrix[i][k] <= '9')))
+                return(0); 
+            if (utils->matrix[i][k] >= '0' && utils->matrix[i][k] <= '9' && (utils->matrix[i][k+1] == '-' || utils->matrix[i][k+1] == '+'))
+                return(0);
+            if (utils->matrix[i][k] < '0' || utils->matrix[i][k] > '9')
+                return(0);
+        }
+    }
+return(1);
+}
+int valid_arg_bis(char **av)
+{
+      int i;
+      int p;
+      int j;
+     
+      p = 0;
+      i = 0;
+    while(av[++i])
+    {
+        j = 0;
+        if(av[i][0] == '\0')
+            return(0);
+        while(av[i][j] == ' ')
+            j++;
+        if(av[i][j] == '\0')
+            return(0);
+        while(av[i][j])
+        {
+            if((av[i][j] >= '0' && av[i][j] <= '9') || av[i][j] == '+' || av[i][j] == '-')
+                j++;
+        }
+        i++;
+    }
+return(1);
+}
+
+void return_args(char **av, int ac, t_data *utils)
 {
     char *arg;
     int  max_len;
-    int i = 1;
+    int i;
 
     max_len = 0;
-    while (i < argc)
-        max_len += ft_strlen(argv[i++]) + 1;
-    arg = malloc(sizeof(char) * max_len);
-    i = 1;
-    while (i < argc)
-        concatinate(arg, argv[i++]);
+    i = 0;
+    while (++i < ac)
+        max_len += ft_strlen(av[i]) + 1;
+    arg = malloc(sizeof(char) * max_len + 1);
+    i = 0;
+    while (++i < ac)
+        concatinate(arg, av[i]);
     utils->matrix = ft_split(arg, ' ');
     utils->matrix_size = count_space(arg);
-    return (utils->matrix);
+}
+
+void free_all(t_data *utils)
+{
+    int i;
+
+    i = -1;
+    while(utils->matrix[++i])
+        free(utils->matrix[i]);
+    free(utils->matrix);
+    free(utils->all_data);
+    free(utils);
+    exit(0);
 }
 
 int main(int ac, char **av)
 {
-    int i;
+    int *sorted_array;
     t_data *utils;
-    char **str;
-    // t_list *list;
-   if (ac >= 2)
-   {
-i = -1;
-utils = (t_data *)malloc(sizeof(t_data));    
-str = return_arg(av, ac, utils);
-while(++i < utils->matrix_size)
-ft_printf("arguments:%s\n",str[i]);
+    t_list *list;
+    
+   if (ac > 1)
+    {
+        error_arg_bis(av);
+        utils = (t_data *)malloc(sizeof(t_data));    
+        return_args(av, ac, utils);
+        utils->all_data = (int *)malloc(sizeof(int) * utils->matrix_size);
+        error_arg(utils);
+        error_int(utils);
+        error_dupe(utils);
+        list = ft_create_list(utils);
+        sorted_array = sort_all_data(utils);
+        set_positions(sorted_array,list);
+
+
+
     }
-    // free(utils);
+
+return(0);
 }
 
-// void  valid_args()
-//     while(str[j])
-//     {
-//     k = 0;
-//         while(str[j][k])    
-//         {
-//             if (!(str[j][k] >= '0' && str[j][k] <= '9')
-//         || !(str[j][k] == '+' && str[j][k+1] >= '0' && str[j][k+1] <= '9')
-//         || !(str[j][k] == '-' && str[j][k+1] >= '0' && str[j][k+1] <= '9'))
-//             exit(1);
-//         k++;
-//     }
-//     j++;
-// }

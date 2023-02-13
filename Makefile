@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 LIBFT_A = libft/libft.a
 CC = cc
-SRC = push_rules.c push_rules_bis.c ft_create_elem.c ft_list_at.c ft_list_clear.c \
-ft_list_last.c ft_list_push_back.c ft_list_push_front.c ft_list_size.c push_swap.c push_swap_utils.c \
-
+SRC = push_rules.c push_rules_bis.c ft_create_node.c ft_list_at.c \
+ft_list_last.c ft_list_size.c push_swap.c push_swap_utils.c \
+linked_lists_utils.c errors_handling.c 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME) 	

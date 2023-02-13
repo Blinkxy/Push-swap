@@ -6,9 +6,14 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:13:12 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 17:51:07 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/10 21:22:33 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	rrr(t_list *stack_a, t_list *stack_b)
+{
+	rra(stack_a);
+	rrb(stack_b);
+}

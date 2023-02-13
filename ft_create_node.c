@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_create_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 11:16:03 by mzoheir           #+#    #+#             */
-/*   Updated: 2022/10/09 22:03:47 by mzoheir          ###   ########.fr       */
+/*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
+/*   Updated: 2023/02/10 21:31:29 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_create_node(int index, int data, int position)
 {
-	return (c >= 'A' & c <= 'Z' || c >= 'a' & c <= 'z');
+	t_list	*head;
+
+	head = (t_list *)malloc(sizeof(t_list));
+	if (!head)
+		return (0);
+	else
+	{
+		head->index = index;
+		head->data = data;
+		head->position = position;
+		head->next = NULL;
+	}
+	return (head);
 }
+
+

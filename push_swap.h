@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/07 18:35:45 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/13 18:55:39 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,30 @@
 # define PUSH_SWAP_H
 # define BASE_LOW "0123456789abcdef"
 # define BASE_UP "0123456789ABCDEF"
+# define INT_MIN -2147483647
+# define INT_MAX 2147483647
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include "libft/libft.h"
+
+typedef struct t_utils
+{
+    char **matrix;
+    int matrix_size;
+	int *all_data;
+}  				t_data;
 
 typedef struct t_node
 {
-	int			arg;
-	int			index;
-	char		*data;
+	int	index;
+	int	data;
+	int position;
 	struct t_node	*next;
 }				t_list;
 
-t_list			*ft_create_elem(void *data);
 void			ft_list_push_front(t_list *begin_list, void *data);
 int				ft_list_size(t_list *begin_list);
 void			ft_list_push_back(t_list *begin_list, void *data);
@@ -45,18 +54,17 @@ void			push_a(t_list *stack_a, t_list *stack_b);
 void			ss(t_list *stack_a, t_list *stack_b);
 void			swap_b(t_list *stack_b);
 void			swap_a(t_list *stack_a);
-char			*ft_strjoin(char *s1, char *s2);
-char 			**each_arg(char **arg_array, int ac);
-int				ft_argprint(va_list p, char c);
-int				ft_atoi(char *str);
-int				ft_printf(char *s, ...);
-int				ft_strlen(char *s);
-int				ft_putnbr(long n);
-int				ft_putnbrhex(long b, char *base);
-char			**ft_split(char *str, char c);
-char			*ft_substr(char *s, int start, int len);
 int				ft_putchar(char c);
-int				ft_unsigned(unsigned int k);
-int				ft_putstr(char *s);
-size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
+int  			valid_args(t_data *utils);
+int 			valid_arg_bis(char **av);
+void			return_args(char **av, int ac, t_data *utils);
+t_list 			*ft_create_list(t_data *utils);
+t_list			*ft_create_node(int index, int data, int position);
+int 			*sort_all_data(t_data *utils);
+void 			set_positions(int *array, t_list *list);
+void    		error_arg_bis(char **av);
+void    		error_arg(t_data *utils);
+void 			error_dupe(t_data *utils);
+void 			error_int(t_data *utils);
+void 			free_all(t_data *utils);
 #endif

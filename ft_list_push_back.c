@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:05:17 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:13 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/10 21:33:15 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_list_push_back(t_list *begin_list, void *data)
 	t_list	*temp;
 
 	temp = begin_list;
-	back = ft_create_elem(data);
+	back = ft_create_node(data);
 	while (begin_list)
 		begin_list = begin_list->next;
 	begin_list->next = back;

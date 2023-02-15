@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/13 20:03:18 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/15 23:51:02 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,17 @@ int  valid_args(t_data *utils)
     k = -1;
         while(utils->matrix[i][++k])
         {
-            if ((utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-') && (utils->matrix[i][k + 1] < '0' || utils->matrix[i][k + 1] > '9'))
+            if ((utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-') && !(utils->matrix[i][k + 1] >= '0' && utils->matrix[i][k + 1] <= '9'))
                 return(0);
             if (!(utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-' || (utils->matrix[i][k] >= '0' && utils->matrix[i][k] <= '9')))
                 return(0); 
             if (utils->matrix[i][k] >= '0' && utils->matrix[i][k] <= '9' && (utils->matrix[i][k+1] == '-' || utils->matrix[i][k+1] == '+'))
                 return(0);
-            if (utils->matrix[i][k] < '0' || utils->matrix[i][k] > '9')
-                return(0);
         }
     }
 return(1);
 }
+
 int valid_arg_bis(char **av)
 {
       int i;
@@ -91,10 +90,11 @@ int valid_arg_bis(char **av)
             return(0);
         while(av[i][j])
         {
-            if((av[i][j] >= '0' && av[i][j] <= '9') || av[i][j] == '+' || av[i][j] == '-')
+            if((av[i][j] >= '0' && av[i][j] <= '9') || av[i][j] == '+' || av[i][j] == '-' || av[i][j] == ' ')
                 j++;
+            else
+                return(0);
         }
-        i++;
     }
 return(1);
 }
@@ -125,34 +125,53 @@ void free_all(t_data *utils)
     while(utils->matrix[++i])
         free(utils->matrix[i]);
     free(utils->matrix);
-    free(utils->all_data);
+    if(utils->all_data)
+        free(utils->all_data);
     free(utils);
     exit(0);
 }
 
-int main(int ac, char **av)
+int main(int ac, char **av) 
 {
     int *sorted_array;
     t_data *utils;
-    t_list *list;
+    t_list *stack_a;
+    t_list *stack_b;
     
+    stack_b = NULL;
+    stack_a = NULL;
    if (ac > 1)
     {
         error_arg_bis(av);
         utils = (t_data *)malloc(sizeof(t_data));    
+        if( ac > 100)
+        utils->range = 30;
+        if (ac <= 100)
+        utils->range = 15;
         return_args(av, ac, utils);
-        utils->all_data = (int *)malloc(sizeof(int) * utils->matrix_size);
+        utils->all_data = (int *)ft_calloc(utils->matrix_size, sizeof(int));
         error_arg(utils);
         error_int(utils);
         error_dupe(utils);
-        list = ft_create_list(utils);
+        stack_a = ft_create_list(utils);
         sorted_array = sort_all_data(utils);
-        set_positions(sorted_array,list);
+        set_positions(sorted_array,&stack_a);
+        first_push_stack_a(&stack_a, &stack_b, utils);
+        // push_back_to_a(&stack_a, &stack_b,utils);
+        indexing_stack_b(&stack_b);
+        ft_printf("pushes:%d\n", utils->pushes);
+        ft_printf("args:%d\n", ac);
+        while(stack_b)
+            {
+                ft_printf("%d\n", stack_b->data);
+                stack_b = stack_b->next;
+            }
+        ft_printf("stack-a:%d\n", stack_a->data);
+        ft_printf("stack-a:%d\n", stack_a->position);
+        ft_printf("range:%d\n", utils->range);
 
 
 
     }
-
 return(0);
 }
-

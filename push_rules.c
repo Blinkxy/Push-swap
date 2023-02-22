@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:06 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 22:36:15 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/22 13:53:24 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	if (*stack_b)
 	{
 		push = *stack_b;
+		*stack_b = (*stack_b)->next;
 		push->next = *stack_a;
 		*stack_a = push;
-		*stack_b = (*stack_b)->next;
 		ft_printf("pa\n");
 	}
 }
@@ -67,7 +67,7 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*push;
 
-	if (stack_a)
+	if (*stack_a)
 	{
 		push = *stack_a;
 		*stack_a = (*stack_a)->next;

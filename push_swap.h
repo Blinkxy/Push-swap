@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 23:28:41 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:16:42 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				ft_list_size(t_list *begin_list);
 void			ft_list_push_back(t_list *begin_list, void *data);
 t_list			*ft_list_push_strs(int size, char **strs);
 void			ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
 void			rrr(t_list *stack_a, t_list *stack_b);
 void			rrb(t_list **stack_b);
 void			rra(t_list **stack_a);
@@ -56,6 +57,7 @@ void			push_a(t_list **stack_a, t_list **stack_b);
 void			ss(t_list **stack_a, t_list **stack_b);
 void			swap_b(t_list **stack_b);
 void			swap_a(t_list **stack_a);
+
 int				ft_putchar(char c);
 int  			valid_args(t_data *utils);
 int 			valid_arg_bis(char **av);
@@ -63,13 +65,18 @@ void			return_args(char **av, int ac, t_data *utils);
 t_list 			*ft_create_list(t_data *utils);
 t_list			*ft_create_node(int index, int data, int position);
 int 			*sort_all_data(t_data *utils);
-void 			set_positions(int *array, t_list **list);
+void 			set_positions(int *array, t_list **list,t_data *utils);
 void    		error_arg_bis(char **av);
 void    		error_arg(t_data *utils);
 void 			error_dupe(t_data *utils);
 void 			error_int(t_data *utils);
 void 			free_all(t_data *utils);
 void 			first_push_stack_a(t_list **stack_a, t_list **stack_b, t_data *utils);
-// void			push_back_to_a(t_list **stack_a, t_list **stack_b,t_data *utils);
-void			indexing_stack_b(t_list **stack_b);
+void			push_back_to_a(t_list **stack_a, t_list **stack_b,t_data *utils);
+void			indexing_stack(t_list **stack);
+void    		list_2(t_list **stack_a);
+void    		list_3(t_list **stack_a);
+void    		list_4(t_list **stack_a,t_list **stack_b);
+void    		list_5(t_list **stack_a,t_list **stack_b);
+void    		list_all(int ac, t_list **stack_a,t_list **stack_b);
 #endif

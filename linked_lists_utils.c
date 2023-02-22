@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 20:39:48 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 23:46:35 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:56:34 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int *sort_all_data(t_data *utils)
     return(sorted);
 }
 
-void set_positions(int *array, t_list **list)
+void set_positions(int *array, t_list **list, t_data *utils)
 {
     int i;
     t_list *tmp;
 
     i = 0;
-    while(array[i])
+    while(i < utils->matrix_size)
     {
         tmp = *list;
         while(tmp != NULL)
@@ -76,22 +76,23 @@ void set_positions(int *array, t_list **list)
 
 void    first_push_stack_a(t_list **stack_a, t_list **stack_b, t_data *utils)
 {   
-    while((*stack_a)->next)
+    while(*stack_a)
     {
-        if((*stack_a)->position <= utils->range + 1)
+        if((*stack_a)->position > utils->range)
+                rotate_a(stack_a);
+        if((*stack_a)->position <= utils->range)
             {
                 push_b(stack_a, stack_b);
                 utils->range++;
                 utils->pushes++;
             }
-        if((*stack_b)->position < utils->pushes)
+        if(ft_list_size(*stack_b) > 1 && (*stack_b)->position < utils->pushes)
                 rotate_b(stack_b);
-        else if((*stack_a)->position > utils->range)
-                rotate_a(stack_a);
+                
     }
 } 
 
-void    indexing_stack_b(t_list **stack_b)
+void    indexing_stack(t_list **stack_b)
 {
     t_list *tmp;
     int i;
@@ -105,10 +106,31 @@ void    indexing_stack_b(t_list **stack_b)
         i++;
     }
 }
-// void    push_back_to_a(t_list **stack_a, t_list **stack_b,t_data *utils)
-// {
-//     while((*stack_b)->next)
-//     {
-//         if((*stack_b)->position == utils->pushes)
-//     }
-// }
+
+void    push_back_to_a(t_list **stack_a, t_list **stack_b,t_data *utils)
+{
+    t_list *tmp;
+    
+    while(*stack_b)
+    {
+        indexing_stack(stack_b);
+        tmp = *stack_b;
+        while(tmp->position != utils->pushes)
+            tmp = tmp->next;
+        if (tmp->index <= ((utils->pushes) / 2))
+        {
+        while((*stack_b)->position != utils->pushes)
+                rotate_b(stack_b);
+        }
+        else if(tmp->index > ((utils->pushes) / 2))
+            {
+                while((*stack_b)->position != utils->pushes)
+                    rrb(stack_b);
+            }
+        if((*stack_b)->position == utils->pushes)
+            {
+                push_a(stack_a, stack_b);
+                utils->pushes--;
+            }
+    }
+}

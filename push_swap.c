@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 23:51:02 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:45:38 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void return_args(char **av, int ac, t_data *utils)
     i = 0;
     while (++i < ac)
         concatinate(arg, av[i]);
-    utils->matrix = ft_split(arg, ' ');
     utils->matrix_size = count_space(arg);
+    utils->matrix = ft_split(arg, ' ');
 }
 
 void free_all(t_data *utils)
@@ -140,14 +140,10 @@ int main(int ac, char **av)
     
     stack_b = NULL;
     stack_a = NULL;
-   if (ac > 1)
+   if (ac > 2)
     {
         error_arg_bis(av);
         utils = (t_data *)malloc(sizeof(t_data));    
-        if( ac > 100)
-        utils->range = 30;
-        if (ac <= 100)
-        utils->range = 15;
         return_args(av, ac, utils);
         utils->all_data = (int *)ft_calloc(utils->matrix_size, sizeof(int));
         error_arg(utils);
@@ -155,22 +151,24 @@ int main(int ac, char **av)
         error_dupe(utils);
         stack_a = ft_create_list(utils);
         sorted_array = sort_all_data(utils);
-        set_positions(sorted_array,&stack_a);
-        first_push_stack_a(&stack_a, &stack_b, utils);
-        // push_back_to_a(&stack_a, &stack_b,utils);
-        indexing_stack_b(&stack_b);
-        ft_printf("pushes:%d\n", utils->pushes);
-        ft_printf("args:%d\n", ac);
-        while(stack_b)
-            {
-                ft_printf("%d\n", stack_b->data);
-                stack_b = stack_b->next;
-            }
-        ft_printf("stack-a:%d\n", stack_a->data);
-        ft_printf("stack-a:%d\n", stack_a->position);
-        ft_printf("range:%d\n", utils->range);
-
-
+        set_positions(sorted_array,&stack_a,utils);
+        
+        list_all(ac,&stack_a,&stack_b);
+        /*
+        if (ac <= 100 && ac > 6)
+        {
+            utils->range = 15;
+            first_push_stack_a(&stack_a, &stack_b, utils);
+            push_back_to_a(&stack_a, &stack_b,utils);
+        }
+        if (ac > 100)
+        {
+            utils->range = 30;
+            first_push_stack_a(&stack_a, &stack_b, utils);
+            push_back_to_a(&stack_a, &stack_b,utils);
+        }
+        */
+        //  int i = 1;
 
     }
 return(0);

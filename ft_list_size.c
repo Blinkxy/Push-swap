@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:55:12 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/02 17:52:36 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:52:04 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 int	ft_list_size(t_list *begin_list)
 {
 	int	i;
+	t_list *tmp;
 
 	i = 0;
-	if (begin_list)
+	tmp = begin_list;
+	while (tmp)
 	{
-		while (begin_list)
-		{
-			begin_list = begin_list->next;
-			i++;
-		}
+		tmp = tmp->next;
+		i++;
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:21:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/10 21:31:29 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/16 19:02:39 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ t_list	*ft_create_node(int index, int data, int position)
 	head = (t_list *)malloc(sizeof(t_list));
 	if (!head)
 		return (0);
-	else
-	{
-		head->index = index;
-		head->data = data;
-		head->position = position;
-		head->next = NULL;
-	}
+	head->index = index;
+	head->data = data;
+	head->position = position;
+	head->next = NULL;
 	return (head);
 }
 

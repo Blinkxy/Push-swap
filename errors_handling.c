@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:23:41 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 15:54:15 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:04:59 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ while(utils->matrix[++i])
     {
                 ft_printf("Error\n");
                 free_all(utils);
+                exit(0);
     }
         utils->all_data[i] = nb;
 }
@@ -45,6 +46,8 @@ while(++i < utils->matrix_size)
         {
             ft_printf("Error\n");
             free_all(utils);
+            exit(0);
+
         }
         save_i++;
     }
@@ -66,5 +69,6 @@ void    error_arg(t_data *utils)
     {
         ft_printf("Error\n");
         free_all(utils);
+        exit(0);
     }
 }

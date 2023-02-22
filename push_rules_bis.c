@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:38:14 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/15 22:30:55 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:56:15 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	rotate_a(t_list **stack_a)
 		tmp->next = *stack_a;
 		(*stack_a)->next = NULL;
 		*stack_a = rotate;
+		ft_printf("ra\n");
 	}
 }
 
@@ -66,8 +67,10 @@ void	rra(t_list **stack_a)
 			tail = *stack_a;
 			*stack_a = (*stack_a)->next;
 		}
-		(*stack_a)->next = head;
+		if((*stack_a)->next == NULL)
+			(*stack_a)->next = head;
 		tail->next = NULL;
+		ft_printf("rra\n");
 	}
 }
 
@@ -86,5 +89,6 @@ void	rrb(t_list **stack_b)
 		}
 		(*stack_b)->next = head;
 		tail->next = NULL;
+		ft_printf("rrb\n");
 	}
 }

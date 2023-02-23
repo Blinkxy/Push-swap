@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/23 00:16:42 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 23:27:46 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ void    		list_2(t_list **stack_a);
 void    		list_3(t_list **stack_a);
 void    		list_4(t_list **stack_a,t_list **stack_b);
 void    		list_5(t_list **stack_a,t_list **stack_b);
+void    		list_5_bis(t_list **stack_a,t_list **stack_b);
+void    		list_5_bis_2(t_list **stack_a, t_list **stack_b);
 void    		list_all(int ac, t_list **stack_a,t_list **stack_b);
+int				biggest(t_list **stack_b);
 #endif

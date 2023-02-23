@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/23 00:45:38 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 23:53:06 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,24 +152,24 @@ int main(int ac, char **av)
         stack_a = ft_create_list(utils);
         sorted_array = sort_all_data(utils);
         set_positions(sorted_array,&stack_a,utils);
-        
         list_all(ac,&stack_a,&stack_b);
-        /*
-        if (ac <= 100 && ac > 6)
+        if (utils->matrix_size <= 100 && utils->matrix_size > 5)
         {
             utils->range = 15;
             first_push_stack_a(&stack_a, &stack_b, utils);
             push_back_to_a(&stack_a, &stack_b,utils);
         }
-        if (ac > 100)
+        if (utils->matrix_size > 100)
         {
-            utils->range = 30;
+            utils->range = 35;
             first_push_stack_a(&stack_a, &stack_b, utils);
             push_back_to_a(&stack_a, &stack_b,utils);
         }
-        */
-        //  int i = 1;
-
+        // while(stack_a)
+        // {
+        //     ft_printf("%d ", stack_a->data);
+        //     stack_a = stack_a->next;
+        // }
     }
 return(0);
 }

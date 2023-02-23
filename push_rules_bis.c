@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:38:14 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/23 00:56:15 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:29:20 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	rra(t_list **stack_a)
 			tail = *stack_a;
 			*stack_a = (*stack_a)->next;
 		}
-		if((*stack_a)->next == NULL)
-			(*stack_a)->next = head;
+		(*stack_a)->next = head;
 		tail->next = NULL;
 		ft_printf("rra\n");
 	}

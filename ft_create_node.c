@@ -25,5 +25,3 @@ t_list	*ft_create_node(int index, int data, int position)
 	head->next = NULL;
 	return (head);
 }
-
-

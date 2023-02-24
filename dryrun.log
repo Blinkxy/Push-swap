@@ -1,9 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/mzoheir/Desktop/Push_Swap'
-cc -Wall -Wextra -Werror -c low_arg_handle.c -o low_arg_handle.o
- 
-make -C Libft
-cc push_rules.o push_rules_bis.o ft_create_node.o ft_list_at.o ft_list_last.o ft_list_size.o push_swap.o push_swap_utils.o linked_lists_utils.o errors_handling.o low_arg_handle.o libft/libft.a -o push_swap
-echo ---program linked---
-make: Leaving directory `/Users/mzoheir/Desktop/Push_Swap'
- 

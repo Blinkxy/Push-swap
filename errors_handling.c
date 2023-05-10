@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:23:41 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:28 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/24 16:37:55 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	error_dupe(t_data *utils)
 			save_i++;
 		}
 	}
-	if (sorted(utils) == 0)
+	if (sorted(utils))
 	{
 		free_all(utils);
 		exit(0);

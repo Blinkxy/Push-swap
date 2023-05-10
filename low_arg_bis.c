@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 20:47:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/24 16:13:10 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/02/24 16:41:33 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ int	sorted(t_data *utils)
 	int	j;
 
 	i = 0;
-	while (utils->all_data[i])
+	while (i < utils->matrix_size)
 	{
-		j = 0;
-		while (i + j < utils->matrix_size)
+		j = i + 1;
+		while (j < utils->matrix_size)
 		{
-			if (utils->all_data[i + j] > utils->all_data[i + j + 1])
+			if (utils->all_data[i] > utils->all_data[j])
 				return (0);
 			j++;
 		}

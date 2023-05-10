@@ -23,7 +23,7 @@ clean:
 	@$(RM) $(OBJ) 
 
 fclean: clean
-	@$(RM) $(NAME) libft/*.o
+	@$(RM) $(NAME) libft/*.o $(LIBFT_A)
 	@echo ---program cleared---
 	@echo ---objects cleared---
 

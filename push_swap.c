@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:35 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/10 14:23:58 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	main(int ac, char **av)
 
 	stack_b = NULL;
 	stack_a = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		error_arg_bis(av);
 		utils = (t_data *)malloc(sizeof(t_data));

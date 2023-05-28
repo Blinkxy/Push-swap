@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/05/10 14:23:58 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/28 19:44:01 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int	main(int ac, char **av)
 		set_positions(sorted_array, &stack_a, utils);
 		list_all(ac, &stack_a, &stack_b);
 		main_bis(&stack_a, &stack_b, utils);
+		free_all(utils);
 	}
 	return (0);
 }

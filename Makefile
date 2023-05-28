@@ -14,6 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C Libft
 	@$(CC) $(OBJ) $(LIBFT_A) -o $(NAME)
+	@@$(RM) 
 	@echo ---program linked---
 
 %.o: %.c

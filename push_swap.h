@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/24 15:33:56 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/28 19:43:28 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # define BASE_LOW "0123456789abcdef"
 # define BASE_UP "0123456789ABCDEF"
-# define INT_MIN -2147483647
+# define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
 # include "libft/libft.h"

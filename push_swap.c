@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 17:51:18 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/05/28 19:44:01 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/31 19:22:00 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ int	valid_args(t_data *utils)
 		while (utils->matrix[i][++k])
 		{
 			if ((utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-')
-					&& !(utils->matrix[i][k + 1] >= '0' && utils->matrix[i][k
-						+ 1] <= '9'))
+				&& !(utils->matrix[i][k + 1] >= '0' && utils->matrix[i][k
+					+ 1] <= '9'))
 				return (0);
 			if (!(utils->matrix[i][k] == '+' || utils->matrix[i][k] == '-'
-						|| (utils->matrix[i][k] >= '0'
-							&& utils->matrix[i][k] <= '9')))
+					|| (utils->matrix[i][k] >= '0'
+						&& utils->matrix[i][k] <= '9')))
 				return (0);
 			if (utils->matrix[i][k] >= '0' && utils->matrix[i][k] <= '9'
-					&& (utils->matrix[i][k + 1] == '-' || utils->matrix[i][k
-						+ 1] == '+'))
+				&& (utils->matrix[i][k + 1] == '-' || utils->matrix[i][k
+					+ 1] == '+'))
 				return (0);
 		}
 	}
@@ -95,7 +95,7 @@ int	valid_arg_bis(char **av)
 		while (av[i][j])
 		{
 			if ((av[i][j] >= '0' && av[i][j] <= '9') || av[i][j] == '+'
-					|| av[i][j] == '-' || av[i][j] == ' ')
+				|| av[i][j] == '-' || av[i][j] == ' ')
 				j++;
 			else
 				return (0);
@@ -110,6 +110,7 @@ int	main(int ac, char **av)
 	t_data	*utils;
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*tmp;
 
 	stack_b = NULL;
 	stack_a = NULL;
@@ -119,13 +120,13 @@ int	main(int ac, char **av)
 		utils = (t_data *)malloc(sizeof(t_data));
 		return_args(av, ac, utils);
 		utils->all_data = (int *)ft_calloc(utils->matrix_size, sizeof(int));
-		error_arg(utils);
-		error_int(utils);
-		error_dupe(utils);
+		errors(utils);
 		stack_a = ft_create_list(utils);
 		sorted_array = sort_all_data(utils);
 		set_positions(sorted_array, &stack_a, utils);
-		list_all(ac, &stack_a, &stack_b);
+		tmp = stack_a;
+		norm_bis(utils, tmp);
+		list_all(&stack_a, &stack_b);
 		main_bis(&stack_a, &stack_b, utils);
 		free_all(utils);
 	}

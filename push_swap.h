@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 19:46:25 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/05/28 19:43:28 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/31 19:22:13 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct t_node
 	int				index;
 	int				data;
 	int				position;
+	int				size;
 	struct t_node	*next;
 }					t_list;
 
@@ -82,10 +83,12 @@ void				list_4(t_list **stack_a, t_list **stack_b);
 void				list_5(t_list **stack_a, t_list **stack_b);
 void				list_5_bis(t_list **stack_a, t_list **stack_b);
 void				list_5_bis_2(t_list **stack_a, t_list **stack_b);
-void				list_all(int ac, t_list **stack_a, t_list **stack_b);
+void				list_all(t_list **stack_a, t_list **stack_b);
 int					biggest(t_list **stack_b);
 void				main_bis(t_list **stack_a, t_list **stack_b, t_data *utils);
 int					count_space(char *str);
 int					concatinate(char *str1, char *str2);
 int					sorted(t_data *utils);
+void				norm_bis(t_data *utils, t_list *tmp);
+void				errors(t_data *utils);
 #endif

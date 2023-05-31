@@ -6,7 +6,7 @@
 /*   By: mzoheir <mzoheir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 20:47:08 by mzoheir           #+#    #+#             */
-/*   Updated: 2023/02/24 16:41:33 by mzoheir          ###   ########.fr       */
+/*   Updated: 2023/05/31 19:20:07 by mzoheir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,13 @@ int	sorted(t_data *utils)
 		i++;
 	}
 	return (1);
+}
+
+void	norm_bis(t_data *utils, t_list *tmp)
+{
+	while (tmp)
+	{
+		tmp->size = utils->matrix_size;
+		tmp = tmp->next;
+	}
 }
